@@ -1,224 +1,223 @@
 ﻿<LayoutSiderContent>
-    <AuthorizeView>
-        <Bar Breakpoint="Breakpoint.Desktop"
-             NavigationBreakpoint="Breakpoint.Desktop"
-             Mode="BarMode.VerticalInline"
-             CollapseMode="BarCollapseMode.Small">
-            <BarToggler Overflow="Overflow.Visible" />
-            <BarBrand>
+
+    <Bar Breakpoint="Breakpoint.Desktop"
+         NavigationBreakpoint="Breakpoint.Desktop"
+         Mode="BarMode.VerticalInline"
+         CollapseMode="BarCollapseMode.Small">
+        <BarToggler Overflow="Overflow.Visible" />
+        <BarBrand>
+            <BarItem>
+                <BarLink To="">
+                    <BarIcon IconName="customIcon" />  VanManager
+                </BarLink>
+            </BarItem>
+        </BarBrand>
+        <BarMenu>
+            <BarStart>
+                @if (_supportKcc)
+                {
+                    <BarItem>
+                        <BarDropdown>
+                            <BarDropdownToggle Class="ms-0 ps-2" Trigger="BarDropdownToggleTrigger.ClickAny">
+                                <BarIcon Class="text-center" IconName="IconName.Headset" />KCC
+                            </BarDropdownToggle>
+                            <BarDropdownMenu Class="py-0">
+                                <BarLink Class="pe-2 mt-0" To="kcc" Title="Klant contact center">
+                                    <BarIcon IconName="IconName.Dashboard" />Dashboard
+                                </BarLink>
+                                @if (_showWastePicturesForm)
+                                {
+                                    <BarLink Class="pe-2 mt-0" To="contactmoments" Title="brieven" Match="Match.Prefix">
+                                        <BarIcon IconName="@("fa-file-invoice")" />Brieven
+                                    </BarLink>
+                                }
+                                <BarLink Class="pe-2 mt-0" To="kccnotes" Title="notities" Match="Match.Prefix">
+                                    <BarIcon IconName="@("fa-regular fa-comment")" />Notities
+                                </BarLink>
+                            </BarDropdownMenu>
+                        </BarDropdown>
+                    </BarItem>
+                }
+
+                @if (_supportBincoach)
+                {
+                    <BarItem>
+                        <BarLink Class="mt-0 ps-2" To="coaches" Title="Afvalcoach" Match="Match.Prefix">
+                            <BarIcon IconName="@("fa-chalkboard-user")" /> Afvalcoach
+                        </BarLink>
+                    </BarItem>
+                }
+
                 <BarItem>
-                    <BarLink To="">
-                        <BarIcon IconName="customIcon" />  VanManager
+                    <BarLink Class="mt-0 ps-2" To="health" Title="Werkplaats">
+                        <BarIcon IconName="@("fa-truck-medical")" />Werkplaats
                     </BarLink>
                 </BarItem>
-            </BarBrand>
-            <BarMenu>
-                <BarStart>
-                    @if (_supportKcc)
-                    {
-                        <BarItem>
-                            <BarDropdown>
-                                <BarDropdownToggle Class="ms-0 ps-2" Trigger="BarDropdownToggleTrigger.ClickAny">
-                                    <BarIcon Class="text-center" IconName="IconName.Headset" />KCC
-                                </BarDropdownToggle>
-                                <BarDropdownMenu Class="py-0">
-                                    <BarLink Class="pe-2 mt-0" To="kcc" Title="Klant contact center">
-                                        <BarIcon IconName="IconName.Dashboard" />Dashboard
-                                    </BarLink>
-                                    @if (_showWastePicturesForm)
-                                    {
-                                        <BarLink Class="pe-2 mt-0" To="contactmoments" Title="brieven" Match="Match.Prefix">
-                                            <BarIcon IconName="@("fa-file-invoice")" />Brieven
-                                        </BarLink>
-                                    }
-                                    <BarLink Class="pe-2 mt-0" To="kccnotes" Title="notities" Match="Match.Prefix">
-                                        <BarIcon IconName="@("fa-regular fa-comment")" />Notities
-                                    </BarLink>
-                                </BarDropdownMenu>
-                            </BarDropdown>
-                        </BarItem>
-                    }
 
-                    @if (_supportBincoach)
-                    {
-                        <BarItem>
-                            <BarLink Class="mt-0 ps-2" To="coaches" Title="Afvalcoach" Match="Match.Prefix">
-                                <BarIcon IconName="@("fa-chalkboard-user")" /> Afvalcoach
-                            </BarLink>
-                        </BarItem>
-                    }
+                <BarItem>
+                    <BarLink Class="mt-0 ps-2" To="vanmap" Title="Kaart" Match="Match.Prefix">
+                        <BarIcon IconName="IconName.Map" />Kaart
+                    </BarLink>
+                </BarItem>
 
-                    <BarItem>
-                        <BarLink Class="mt-0 ps-2" To="health" Title="Werkplaats">
-                            <BarIcon IconName="@("fa-truck-medical")" />Werkplaats
-                        </BarLink>
-                    </BarItem>
-
-                    <BarItem>
-                        <BarLink Class="mt-0 ps-2" To="vanmap" Title="Kaart" Match="Match.Prefix">
-                            <BarIcon IconName="IconName.Map" />Kaart
-                        </BarLink>
-                    </BarItem>
-
-                    <BarItem>
-                        <BarLink Class="mt-0 ps-2" To="heatmap" Title="Kaart" Match="Match.Prefix">
-                            <BarIcon IconName="IconName.Fire" />Heatmap
-                        </BarLink>
-                    </BarItem>
+                <BarItem>
+                    <BarLink Class="mt-0 ps-2" To="heatmap" Title="Kaart" Match="Match.Prefix">
+                        <BarIcon IconName="IconName.Fire" />Heatmap
+                    </BarLink>
+                </BarItem>
 
                    
 
+                <BarItem>
+                    <BarLink Class="mt-0 ps-2" To="registrations" Title="Registraties" Match="Match.Prefix">
+                        <BarIcon IconName="IconName.Edit" />Registraties
+                    </BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Class="mt-0 ps-2" To="export" Title="Export">
+                        <BarIcon IconName="@("fa-file-excel")" />Export
+                        @if (_downloadedBackgroundtaskCount > 0)
+                        {
+                            <Badge Pill Color="Color.Warning" TextColor="TextColor.Secondary">@_downloadedBackgroundtaskCount</Badge>
+                        }
+                    </BarLink>
+                </BarItem>
+                <BarItem>
+                    <BarLink Class="mt-0 ps-2" To="blackwhitelist" Title="Black/ whitelist">
+                        <BarIcon IconName="@("fa-file-lines")" />Black & Whitelist
+                    </BarLink>
+                </BarItem>
+
+                <BarItem>
+                    <BarLink Class="mt-0 ps-2" To="users" Title="Gebruikers">
+                        <BarIcon IconName="IconName.User" />Gebruikers
+                    </BarLink>
+                </BarItem>
+
+                @if (_navigationEnabled)
+                {
                     <BarItem>
-                        <BarLink Class="mt-0 ps-2" To="registrations" Title="Registraties" Match="Match.Prefix">
-                            <BarIcon IconName="IconName.Edit" />Registraties
+                        <BarLink Class="mt-0 ps-2" To="navigation" Title="Navigatie">
+                            <BarIcon IconName="@("fa-compass")" />Navigatie
                         </BarLink>
                     </BarItem>
+                }
+
+
+
+                @if (_serviceVisible)
+                {
                     <BarItem>
-                        <BarLink Class="mt-0 ps-2" To="export" Title="Export">
-                            <BarIcon IconName="@("fa-file-excel")" />Export
-                            @if (_downloadedBackgroundtaskCount > 0)
-                            {
-                                <Badge Pill Color="Color.Warning" TextColor="TextColor.Secondary">@_downloadedBackgroundtaskCount</Badge>
-                            }
-                        </BarLink>
-                    </BarItem>
-                    <BarItem>
-                        <BarLink Class="mt-0 ps-2" To="blackwhitelist" Title="Black/ whitelist">
-                            <BarIcon IconName="@("fa-file-lines")" />Black & Whitelist
-                        </BarLink>
-                    </BarItem>
+                        <BarDropdown>
+                            <BarDropdownToggle Class="ms-0 ps-2" To="/maintenance" Match="Match.Prefix" Trigger="BarDropdownToggleTrigger.ClickAny | BarDropdownToggleTrigger.RouteMatch">
+                                <BarIcon IconName="IconName.Wrench" />Service
+                                @if (_serviceOpenActionsNumber > 0)
+                                {
+                                    <Badge Pill Color="Color.Warning" TextColor="TextColor.Secondary">@_serviceOpenActionsNumber</Badge>
+                                }
+                            </BarDropdownToggle>
+                            <BarDropdownMenu Class="bg-jama-blue text-jama-white py-0">
 
-                    <BarItem>
-                        <BarLink Class="mt-0 ps-2" To="users" Title="Gebruikers">
-                            <BarIcon IconName="IconName.User" />Gebruikers
-                        </BarLink>
-                    </BarItem>
-
-                    @if (_navigationEnabled)
-                    {
-                        <BarItem>
-                            <BarLink Class="mt-0 ps-2" To="navigation" Title="Navigatie">
-                                <BarIcon IconName="@("fa-compass")" />Navigatie
-                            </BarLink>
-                        </BarItem>
-                    }
-
-
-
-                    @if (_serviceVisible)
-                    {
-                        <BarItem>
-                            <BarDropdown>
-                                <BarDropdownToggle Class="ms-0 ps-2" To="/maintenance" Match="Match.Prefix" Trigger="BarDropdownToggleTrigger.ClickAny | BarDropdownToggleTrigger.RouteMatch">
-                                    <BarIcon IconName="IconName.Wrench" />Service
+                                <BarLink Class="pe-2 mt-0" To="/maintenance/vans" Title="Wagens (service)" Match="Match.Prefix">
+                                    <BarIcon IconName="IconName.Truck" />Wagens
                                     @if (_serviceOpenActionsNumber > 0)
                                     {
                                         <Badge Pill Color="Color.Warning" TextColor="TextColor.Secondary">@_serviceOpenActionsNumber</Badge>
                                     }
-                                </BarDropdownToggle>
-                                <BarDropdownMenu Class="bg-jama-blue text-jama-white py-0">
+                                </BarLink>
+                                <BarLink Class="pe-2 mt-0" To="/maintenance/openactions" Title="Open acties">
+                                    <BarIcon IconName="@("fa-screwdriver-wrench")" />Open acties
+                                </BarLink>
 
-                                    <BarLink Class="pe-2 mt-0" To="/maintenance/vans" Title="Wagens (service)" Match="Match.Prefix">
-                                        <BarIcon IconName="IconName.Truck" />Wagens
-                                        @if (_serviceOpenActionsNumber > 0)
-                                        {
-                                            <Badge Pill Color="Color.Warning" TextColor="TextColor.Secondary">@_serviceOpenActionsNumber</Badge>
-                                        }
+                                <BarLink Class="pe-2 mt-0" To="/maintenance/devices" Title="Devices">
+                                    <BarIcon IconName="@("fa-microchip")" />Devices
+                                </BarLink>
+
+                                <BarLink Class="pe-2 mt-0" To="/maintenance/clients" Title="Handhelds">
+                                    <BarIcon IconName="@("fa-mobile")" />Handhelds
+                                </BarLink>
+
+                                <BarLink Class="pe-2 mt-0" To="/maintenance/allvans" Title="Wagens (alle)" Match="Match.Prefix">
+                                    <BarIcon IconName="@("fa-truck-fast")" />Alle wagens
+                                </BarLink>
+
+                                <BarLink Class="pe-2 mt-0" To="/maintenance/customerinfo" Title="Klant" Match="Match.Prefix">
+                                    <BarIcon IconName="@("fa-mug-hot")" />Klant
+                                </BarLink>
+
+                                @if (_serviceTablesVisible)
+                                {
+                                    <BarLink Class="pe-2 mt-0" To="/maintenance/tables" Title="Tabellen" Match="Match.Prefix">
+                                        <BarIcon IconName="@("fa-database")" />Tabellen
                                     </BarLink>
-                                    <BarLink Class="pe-2 mt-0" To="/maintenance/openactions" Title="Open acties">
-                                        <BarIcon IconName="@("fa-screwdriver-wrench")" />Open acties
+                                }
+                                @if (_menuEditorVisible)
+                                {
+                                    <BarLink Class="pe-2 mt-0" To="/maintenance/menubuilder" Title="Menu">
+                                        <BarIcon IconName="IconName.Folder" />Menu
+                                    </BarLink>
+                                }
+                            </BarDropdownMenu>
+                        </BarDropdown>
+                    </BarItem>
+                }
+            </BarStart>
+            <BarEnd>
+                <BarItem>
+                    <BarLink Class="mt-0 ps-2" Title="Gebruikershandleiding VanManager">
+                        <BarIcon IconName="IconName.QuestionCircle" />Handleiding
+                    </BarLink>
+                </BarItem>
+                <AuthorizeView>
+                    <Authorized Context="bContext">
+                        <BarItem>
+                            <BarDropdown>
+
+                                <BarDropdownMenu Class="py-0">
+                                    <BarLink Class="mt-0" Title="Uitloggen">
+                                        <BarIcon IconName="@("fa-sign-out-alt")" />Uitloggen
                                     </BarLink>
 
-                                    <BarLink Class="pe-2 mt-0" To="/maintenance/devices" Title="Devices">
-                                        <BarIcon IconName="@("fa-microchip")" />Devices
-                                    </BarLink>
-
-                                    <BarLink Class="pe-2 mt-0" To="/maintenance/clients" Title="Handhelds">
-                                        <BarIcon IconName="@("fa-mobile")" />Handhelds
-                                    </BarLink>
-
-                                    <BarLink Class="pe-2 mt-0" To="/maintenance/allvans" Title="Wagens (alle)" Match="Match.Prefix">
-                                        <BarIcon IconName="@("fa-truck-fast")" />Alle wagens
-                                    </BarLink>
-
-                                    <BarLink Class="pe-2 mt-0" To="/maintenance/customerinfo" Title="Klant" Match="Match.Prefix">
-                                        <BarIcon IconName="@("fa-mug-hot")" />Klant
-                                    </BarLink>
-
-                                    @if (_serviceTablesVisible)
+                                    @if (_customerSettingsEnabled)
                                     {
-                                        <BarLink Class="pe-2 mt-0" To="/maintenance/tables" Title="Tabellen" Match="Match.Prefix">
-                                            <BarIcon IconName="@("fa-database")" />Tabellen
+                                        <BarLink Class="mt-0" To="customer" Title="Instellingen" Match="Match.Prefix">
+                                            <BarIcon IconName="@("fa-cog")" />Instellingen
                                         </BarLink>
                                     }
-                                    @if (_menuEditorVisible)
+                                    @if (_showErrorLogging)
                                     {
-                                        <BarLink Class="pe-2 mt-0" To="/maintenance/menubuilder" Title="Menu">
-                                            <BarIcon IconName="IconName.Folder" />Menu
+                                        <BarLink Class="mt-0" To="logs" Title="Logs">
+                                            <BarIcon IconName="@("fa-binoculars")" />Logging
                                         </BarLink>
                                     }
+                                    <ThemeSwitcher />
                                 </BarDropdownMenu>
                             </BarDropdown>
                         </BarItem>
-                    }
-                </BarStart>
-                <BarEnd>
+                    </Authorized>
+                </AuthorizeView>
+                @if (_changeCustomerEnabled)
+                {
                     <BarItem>
-                        <BarLink Class="mt-0 ps-2" Title="Gebruikershandleiding VanManager">
-                            <BarIcon IconName="IconName.QuestionCircle" />Handleiding
+                        <BarLink Class="mt-0 ps-2" Title="@CompanyName">
+
+                            @if (!String.IsNullOrEmpty(CompanyLogoSVG))
+                            {
+                                <div class="logo-container">
+                                    @((MarkupString)CompanyLogoSVG)
+                                </div>
+                            }
+                            else
+                            {
+                                <BarIcon IconName="IconName.Building" />
+                            }
+                            @CompanyName
                         </BarLink>
                     </BarItem>
-                    <AuthorizeView>
-                        <Authorized Context="bContext">
-                            <BarItem>
-                                <BarDropdown>
-
-                                    <BarDropdownMenu Class="py-0">
-                                        <BarLink Class="mt-0" Title="Uitloggen">
-                                            <BarIcon IconName="@("fa-sign-out-alt")" />Uitloggen
-                                        </BarLink>
-
-                                        @if (_customerSettingsEnabled)
-                                        {
-                                            <BarLink Class="mt-0" To="customer" Title="Instellingen" Match="Match.Prefix">
-                                                <BarIcon IconName="@("fa-cog")" />Instellingen
-                                            </BarLink>
-                                        }
-                                        @if (_showErrorLogging)
-                                        {
-                                            <BarLink Class="mt-0" To="logs" Title="Logs">
-                                                <BarIcon IconName="@("fa-binoculars")" />Logging
-                                            </BarLink>
-                                        }
-                                        <ThemeSwitcher />
-                                    </BarDropdownMenu>
-                                </BarDropdown>
-                            </BarItem>
-                        </Authorized>
-                    </AuthorizeView>
-                    @if (_changeCustomerEnabled)
-                    {
-                        <BarItem>
-                            <BarLink Class="mt-0 ps-2" Title="@CompanyName">
-
-                                @if (!String.IsNullOrEmpty(CompanyLogoSVG))
-                                {
-                                    <div class="logo-container">
-                                        @((MarkupString)CompanyLogoSVG)
-                                    </div>
-                                }
-                                else
-                                {
-                                    <BarIcon IconName="IconName.Building" />
-                                }
-                                @CompanyName
-                            </BarLink>
-                        </BarItem>
-                    }
-                </BarEnd>
-            </BarMenu>
-        </Bar>
-    </AuthorizeView>
+                }
+            </BarEnd>
+        </BarMenu>
+    </Bar>
 </LayoutSiderContent>
 
 @code {
